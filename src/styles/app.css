@@ -1,0 +1,14 @@
+.app {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: system-ui, sans-serif;
+  color: #fff;
+  background: #1e1e1e;
+  border-radius: 12px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
