@@ -17,3 +17,41 @@ h1 {
   text-align: center;
   margin-bottom: 20px;
 }
+
+.balance {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.balance .amount {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.transaction-form input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.transaction-form button {
+  padding: 10px;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.transaction-form button:hover {
+  background: #43a047;
+}
