@@ -55,3 +55,38 @@ h1 {
 .transaction-form button:hover {
   background: #43a047;
 }
+
+.transaction-list h2 {
+  margin-bottom: 10px;
+}
+
+.transaction-list .empty {
+  text-align: center;
+  opacity: 0.6;
+  margin-bottom: 10px;
+}
+
+.transaction-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.transaction-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: #2a2a2a;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.income {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.expense {
+  color: #e53935;
+  font-weight: bold;
+}
