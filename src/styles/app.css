@@ -90,3 +90,10 @@ h1 {
   color: #e53935;
   font-weight: bold;
 }
+.amount.positive {
+  color: #4caf50; /* green */
+}
+
+.amount.negative {
+  color: #e53935; /* red */
+}
