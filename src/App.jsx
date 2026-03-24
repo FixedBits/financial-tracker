@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./styles/app.css";
 
 import Balance from "./components/Balance";
@@ -7,6 +7,17 @@ import TransactionList from "./components/TransactionList";
 
 function App() {
   const [transactions, setTransactions] = useState([]);
+
+  // Load saved transactions on startup
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("transactions"));
+    if (saved) setTransactions(saved);
+  }, []);
+
+  // Save transactions whenever they change
+  useEffect(() => {
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+  }, [transactions]);
 
   const addTransaction = (transaction) => {
     setTransactions((prev) => [...prev, transaction]);
