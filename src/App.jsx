@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+console.log("App LOADED");
+
+import { useState, useEffect, useRef } from "react";
 import "./styles/app.css";
 
 import Balance from "./components/Balance";
@@ -7,15 +9,21 @@ import TransactionList from "./components/TransactionList";
 
 function App() {
   const [transactions, setTransactions] = useState([]);
+  const firstRender = useRef(true);
 
   // Load saved transactions on startup
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("transactions"));
-    if (saved) setTransactions(saved);
+    if (saved !== null) setTransactions(saved);
   }, []);
 
-  // Save transactions whenever they change
+  // Save transactions whenever they change (but NOT on first render)
   useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+
     localStorage.setItem("transactions", JSON.stringify(transactions));
   }, [transactions]);
 

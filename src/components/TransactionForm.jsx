@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+// Testing
+console.log("TransactionForm LOADED from components folder");
+
 function TransactionForm({ onAdd }) {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState("");
