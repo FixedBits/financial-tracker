@@ -31,6 +31,10 @@ function App() {
     setTransactions((prev) => [...prev, transaction]);
   };
 
+const deleteTransaction = (id) => {
+    setTransactions((prev) => prev.filter((t) => t.id !== id));
+  }
+
   const totalBalance = transactions.reduce((sum, t) => sum + Number(t.amount), 0);
 
   return (
@@ -39,7 +43,9 @@ function App() {
 
       <Balance total={totalBalance} />
       <TransactionForm onAdd={addTransaction} />
-      <TransactionList items={transactions} />
+      <TransactionList
+        items={transactions}
+        onDelete={deleteTransaction} />
     </div>
   );
 }

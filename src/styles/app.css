@@ -75,10 +75,34 @@ h1 {
 .transaction-list li {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
   background: #2a2a2a;
   border-radius: 6px;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
   margin-bottom: 10px;
+}
+
+.transaction-text {
+  font-weight: 500;
+  flex: 1;
+  min-width: 0; /* CRITICAL */
+  word-wrap: break-word;
+  margin-right: 1.5rem;
+}
+
+.transaction-amount {
+  margin-left: auto;
+  margin-right: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-left: auto;
 }
 
 .income {
@@ -96,4 +120,25 @@ h1 {
 
 .amount.negative {
   color: #e53935; /* red */
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0; /* hidden */
+  transition: opacity 0.2s ease;
+}
+
+.delete-btn:hover {
+  opacity: 1;
+  background: rgba(217, 83, 79, 0.1);
+  color: #c9302c;
+  border-radius: 5px;
+}
+
+.transaction-item:hover .delete-btn {
+  opacity: 1;
 }
