@@ -92,7 +92,7 @@ h1 {
 .transaction-text {
   font-weight: 500;
   flex: 1;
-  min-width: 0; /* CRITICAL */
+  min-width: 0;
   word-wrap: break-word;
   margin-right: 1.5rem;
 }
@@ -114,6 +114,7 @@ h1 {
   color: #e53935;
   font-weight: bold;
 }
+
 .amount.positive {
   color: #4caf50; /* green */
 }
@@ -141,4 +142,5 @@ h1 {
 
 .transaction-item:hover .delete-btn {
   opacity: 1;
+  background: #2a2a2a;
 }
