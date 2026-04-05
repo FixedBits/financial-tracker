@@ -72,21 +72,32 @@ h1 {
   margin: 0;
 }
 
-.transaction-list li {
-  display: flex;
-  justify-content: space-between;
-  background: #2a2a2a;
-  border-radius: 6px;
-}
-
 .transaction-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.6rem 0.8rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: #2a2a2a;
   border-radius: 6px;
+  padding: 10px;
   margin-bottom: 10px;
+
+  /* ⭐ Add this */
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    height 0.25s ease,
+    margin 0.25s ease,
+    padding 0.25s ease;
+}
+
+.transaction-item.removing {
+  opacity: 0;
+  transform: translateX(-10px);
+  height: 0;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
 }
 
 .transaction-text {
@@ -102,7 +113,6 @@ h1 {
   margin-right: 1rem;
   font-weight: 600;
   white-space: nowrap;
-  margin-left: auto;
 }
 
 .income {
@@ -142,5 +152,4 @@ h1 {
 
 .transaction-item:hover .delete-btn {
   opacity: 1;
-  background: #2a2a2a;
 }
