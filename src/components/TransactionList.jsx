@@ -1,12 +1,26 @@
+import {useEffect} from "react";
+
 function TransactionList({items, onDelete}) {
+  // Slide‑in animation for new items
+  useEffect(() => {
+    const elements = document.querySelectorAll(".transaction-item.enter");
+    elements.forEach((el) => {
+      requestAnimationFrame(() => {
+        el.classList.add("enter-active");
+      });
+    });
+  }, [items]);
+
   const handleDelete = (id) => {
     const el = document.getElementById(`t-${id}`);
     if (!el) return;
 
-    // Add the animation class
+    // ⭐ Remove enter animation classes so they don't override delete
+    el.classList.remove("enter", "enter-active");
+
+    // ⭐ Apply delete animation
     el.classList.add("removing");
 
-    // Wait for animation to finish, then delete
     setTimeout(() => {
       onDelete(id);
     }, 250);
@@ -20,7 +34,7 @@ function TransactionList({items, onDelete}) {
 
       <ul>
         {items.map((t) => (
-          <li id={`t-${t.id}`} className="transaction-item" key={t.id}>
+          <li id={`t-${t.id}`} className="transaction-item enter" key={t.id}>
             <span className="transaction-text">{t.text}</span>
 
             <span className={`transaction-amount ${t.amount >= 0 ? "income" : "expense"}`}>

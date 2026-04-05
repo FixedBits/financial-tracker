@@ -153,3 +153,16 @@ h1 {
 .transaction-item:hover .delete-btn {
   opacity: 1;
 }
+
+.transaction-item.enter {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.transaction-item.enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
