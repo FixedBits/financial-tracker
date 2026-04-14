@@ -1,4 +1,16 @@
 import {useEffect} from "react";
+import {motion} from "framer-motion";
+
+const parentVariants = {
+  hidden: {opacity: 1}, // Visible parent
+  show: {opacity: 1, transition: {staggerChildren: 0.05}}, // Stagger children
+};
+
+const childVariants = {
+  hidden: {opacity: 0, y: 10}, // Start hidden and slightly down
+  show: {opacity: 1, y: 0},
+  transition: {duration: 0.25, ease: "easeOut"}, // Smooth transition
+};
 
 function TransactionList({items, onDelete}) {
   // Run slide‑in animation for new items
