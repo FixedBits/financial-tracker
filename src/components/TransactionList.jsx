@@ -2,14 +2,17 @@ import {useEffect} from "react";
 import {motion} from "framer-motion";
 
 const parentVariants = {
-  hidden: {opacity: 1}, // Visible parent
+  hidden: {opacity: 1}, // Parent is visible because we don’t want the whole list fading in - only the children.
   show: {opacity: 1, transition: {staggerChildren: 0.05}}, // Stagger children
 };
 
 const childVariants = {
   hidden: {opacity: 0, y: 10}, // Start hidden and slightly down
-  show: {opacity: 1, y: 0},
-  transition: {duration: 0.25, ease: "easeOut"}, // Smooth transition
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {duration: 0.25, ease: "easeOut"}, // Smooth transition
+  },
 };
 
 function TransactionList({items, onDelete}) {
@@ -46,13 +49,10 @@ function TransactionList({items, onDelete}) {
       {/* Show message when there are no items */}
       {items.length === 0 && <p className="empty">No transactions yet</p>}
 
-      <ul>
+      {/* New items start with enter */}
+      <motion.ul key={items.length} variants={parentVariants} initial="hidden" animate="show">
         {items.map((t) => (
-          <li
-            id={`t-${t.id}`}
-            className="transaction-item enter" // New items start with enter
-            key={t.id}
-          >
+          <motion.li variants={childVariants} id={`t-${t.id}`} className="transaction-item" key={t.id}>
             <span className="transaction-text">{t.text}</span>
 
             <span className={`transaction-amount ${t.amount >= 0 ? "income" : "expense"}`}>
@@ -65,9 +65,9 @@ function TransactionList({items, onDelete}) {
             <button className="delete-btn" onClick={() => handleDelete(t.id)}>
               ×
             </button>
-          </li>
+          </motion.li>
         ))}
-      </ul>
+      </motion.ul>
     </div>
   );
 }

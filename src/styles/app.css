@@ -83,10 +83,7 @@ h1 {
   padding: 10px;
   margin-bottom: 10px;
 
-  /* ⭐ Add this */
   transition:
-    opacity 0.25s ease,
-    transform 0.25s ease,
     height 0.25s ease,
     margin 0.25s ease,
     padding 0.25s ease;
