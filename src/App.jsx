@@ -1,6 +1,6 @@
 console.log("App LOADED");
 
-import { useState, useEffect, useRef } from "react";
+import {useState, useEffect, useRef} from "react";
 import "./styles/app.css";
 
 import Balance from "./components/Balance";
@@ -23,17 +23,20 @@ function App() {
       firstRender.current = false;
       return;
     }
-
     localStorage.setItem("transactions", JSON.stringify(transactions));
   }, [transactions]);
 
   const addTransaction = (transaction) => {
     setTransactions((prev) => [...prev, transaction]);
+
+    setTimeout(() => {
+      setTransactions((prev) => prev.map((t) => (t.id === transaction.id ? {...t, isNew: false} : t)));
+    }, 360);
   };
 
-const deleteTransaction = (id) => {
+  const deleteTransaction = (id) => {
     setTransactions((prev) => prev.filter((t) => t.id !== id));
-  }
+  };
 
   const totalBalance = transactions.reduce((sum, t) => sum + Number(t.amount), 0);
 
@@ -43,9 +46,7 @@ const deleteTransaction = (id) => {
 
       <Balance total={totalBalance} />
       <TransactionForm onAdd={addTransaction} />
-      <TransactionList
-        items={transactions}
-        onDelete={deleteTransaction} />
+      <TransactionList items={transactions} onDelete={deleteTransaction} />
     </div>
   );
 }

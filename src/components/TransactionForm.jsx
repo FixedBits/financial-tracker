@@ -1,9 +1,9 @@
-import { useState } from "react";
+import {useState} from "react";
 
 // Testing
 console.log("TransactionForm LOADED from components folder");
 
-function TransactionForm({ onAdd }) {
+function TransactionForm({onAdd}) {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState("");
 
@@ -16,6 +16,7 @@ function TransactionForm({ onAdd }) {
       id: Date.now(),
       text,
       amount: Number(amount),
+      isNew: true,
     };
 
     onAdd(newTransaction);

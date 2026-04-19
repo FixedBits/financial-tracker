@@ -165,3 +165,17 @@ h1 {
     opacity 0.25s ease,
     transform 0.25s ease;
 }
+
+.transaction-item.enter {
+  animation: enterAnim 0.35s ease-out;
+}
+@keyframes enterAnim {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: transLateY(0);
+  }
+}

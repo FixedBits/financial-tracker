@@ -1,17 +1,30 @@
 import {useEffect} from "react";
-import {motion} from "framer-motion";
+import {easeIn, motion} from "framer-motion";
 
-const parentVariants = {
-  hidden: {opacity: 1}, // Parent is visible because we don’t want the whole list fading in - only the children.
-  show: {opacity: 1, transition: {staggerChildren: 0.05}}, // Stagger children
+const listVariants = {
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
 };
 
-const childVariants = {
-  hidden: {opacity: 0, y: 10}, // Start hidden and slightly down
-  show: {
+const itemVariants = {
+  initial: {opacity: 0, y: 12},
+  animate: {
     opacity: 1,
     y: 0,
-    transition: {duration: 0.25, ease: "easeOut"}, // Smooth transition
+    transition: {duration: 0.25, ease: "easeOut"},
+  },
+  exit: {
+    opacity: 0,
+    y: -8,
+    height: 0,
+    marginTop: 0,
+    marginBottom: 0,
+    transition: {duration: 0.25, ease: "easeOut"},
   },
 };
 
@@ -50,9 +63,9 @@ function TransactionList({items, onDelete}) {
       {items.length === 0 && <p className="empty">No transactions yet</p>}
 
       {/* New items start with enter */}
-      <motion.ul key={items.length} variants={parentVariants} initial="hidden" animate="show">
+      <motion.ul variants={listVariants} initial="hidden" animate="show">
         {items.map((t) => (
-          <motion.li variants={childVariants} id={`t-${t.id}`} className="transaction-item" key={t.id}>
+          <motion.li variants={itemVariants} id={`t-${t.id}`} className={`transaction-item ${t.isNew ? "enter" : ""}`} key={t.id}>
             <span className="transaction-text">{t.text}</span>
 
             <span className={`transaction-amount ${t.amount >= 0 ? "income" : "expense"}`}>
