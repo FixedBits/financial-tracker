@@ -75,6 +75,9 @@ function TransactionList({items, onDelete}) {
               })}
             </span>
 
+            <button className="edit-btn" onClick={() => onEdit(id)}>
+              Delete
+            </button>
             <button className="delete-btn" onClick={() => handleDelete(t.id)}>
               ×
             </button>
