@@ -29,7 +29,7 @@ const itemVariants = {
 };
 
 function TransactionList({items, onDelete}) {
-  // ⭐ Inline component
+  // Inline component
   function TransactionItem({t}) {
     const [isEditing, setIsEditing] = useState(false);
 
@@ -44,8 +44,9 @@ function TransactionList({items, onDelete}) {
           })}
         </span>
 
-        {/* Edit feature coming later */}
-
+        <button className="edit-btn" onClick={() => setIsEditing(true)}>
+          Edit
+        </button>
         <button className="delete-btn" onClick={() => handleDelete(t.id)}>
           ×
         </button>
