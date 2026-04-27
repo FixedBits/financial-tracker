@@ -66,7 +66,8 @@ function TransactionList({items, onDelete}) {
 
   // Handle delete animation
   const handleDelete = (id) => {
-    const el = document.getElementById(`t-${id}`);    if (!el) return;
+    const el = document.getElementById(`t-${id}`);
+    if (!el) return;
 
     el.classList.remove("enter", "enter-active");
     el.classList.add("removing");
