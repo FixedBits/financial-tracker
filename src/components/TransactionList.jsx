@@ -32,6 +32,9 @@ function TransactionList({items, onDelete}) {
   // Inline component
   function TransactionItem({t}) {
     const [isEditing, setIsEditing] = useState(false);
+    
+    const [editText, setEditText] = useState(t.text);
+    const [editAmount, setEditAmount] = useState(t.amount);
 
     return (
       <motion.li variants={itemVariants} id={`t-${t.id}`} className={`transaction-item ${t.isNew ? "enter" : ""}`}>
