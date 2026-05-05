@@ -38,6 +38,7 @@ function TransactionList({items, onDelete}) {
 
     return (
       <motion.li variants={itemVariants} id={`t-${t.id}`} className={`transaction-item ${t.isNew ? "enter" : ""}`}>
+        
         <span className="transaction-text">{t.text}</span>
 
         <span className={`transaction-amount ${t.amount >= 0 ? "income" : "expense"}`}>
