@@ -40,13 +40,16 @@ function App() {
 
   const totalBalance = transactions.reduce((sum, t) => sum + Number(t.amount), 0);
 
+  const editTransaction = (id, newText, newAmount) => {
+    setTransactions((prev) => prev.map((t) => (t.id === id ? {...t, text: newText, amount: newAmount} : t)));
+  };
+
   return (
     <div className="app">
       <h1>Financial Tracker</h1>
-
       <Balance total={totalBalance} />
       <TransactionForm onAdd={addTransaction} />
-      <TransactionList items={transactions} onDelete={deleteTransaction} />
+      <TransactionList items={transactions} onDelete={deleteTransaction} onEdit={editTransaction} />
     </div>
   );
 }
