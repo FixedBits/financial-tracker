@@ -28,29 +28,47 @@ const itemVariants = {
   },
 };
 
-function TransactionList({items, onDelete}) {
+function TransactionList({items, onDelete, onEdit}) {
   // Inline component
-  function TransactionItem({t}) {
+  function TransactionItem({t, onEdit}) {
     const [isEditing, setIsEditing] = useState(false);
 
     const [editText, setEditText] = useState(t.text);
+
     const [editAmount, setEditAmount] = useState(t.amount);
 
     return (
       <motion.li variants={itemVariants} id={`t-${t.id}`} className={`transaction-item ${t.isNew ? "enter" : ""}`}>
-        
-        <span className="transaction-text">{t.text}</span>
+        {isEditing ? (
+          <>
+            <input className="edit-input" value={editText} onChange={(e) => setEditText(e.target.value)} />
 
-        <span className={`transaction-amount ${t.amount >= 0 ? "income" : "expense"}`}>
-          ${" "}
-          {t.amount.toLocaleString(undefined, {
-            minimumFractionDigits: 2,
-          })}
-        </span>
+            <input className="edit-input amount" type="number" value={editAmount} onChange={(e) => setEditAmount(Number(e.target.value))} />
 
-        <button className="edit-btn" onClick={() => setIsEditing(true)}>
-          Edit
-        </button>
+            <button
+              className="save-btn"
+              onClick={() => {
+                onEdit(t.id, editText, editAmount);
+                setIsEditing(false);
+              }}
+            >
+              Save
+            </button>
+            <button className="cancel-btn" onClick={() => setIsEditing(false)}>
+              Cancel
+            </button>
+          </>
+        ) : (
+          <>
+            <span className="transaction-text">{t.text}</span>
+            <span className={`transaction-amount ${t.amount >= 0 ? "income" : "expense"}`}>$ {t.amount.toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
+
+            <button className="edit-btn" onClick={() => setIsEditing(true)}>
+              Edit
+            </button>
+          </>
+        )}
+
         <button className="delete-btn" onClick={() => handleDelete(t.id)}>
           ×
         </button>
@@ -89,7 +107,7 @@ function TransactionList({items, onDelete}) {
 
       <motion.ul variants={listVariants} initial="hidden" animate="show">
         {items.map((t) => (
-          <TransactionItem t={t} key={t.id} />
+          <TransactionItem t={t} key={t.id} onEdit={onEdit} />
         ))}
       </motion.ul>
     </div>
