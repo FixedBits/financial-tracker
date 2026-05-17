@@ -20,6 +20,9 @@ function App() {
   // Global list of all transactions
   const [transactions, setTransactions] = useState([]);
 
+  // Filter state
+  const [filter, setFilter] = useState("all");
+
   // Tracks whether this is the first render
   const firstRender = useRef(true);
 
