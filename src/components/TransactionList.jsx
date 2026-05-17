@@ -52,6 +52,8 @@ function TransactionList({items, onDelete, onEdit}) {
     // Local state: editable amount field
     const [editAmount, setEditAmount] = useState(t.amount);
 
+    
+
     // -------------------------------
     // CHILD COMPONENT RETURN (UI for ONE item)
     // -------------------------------
