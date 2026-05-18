@@ -52,11 +52,10 @@ function TransactionList({items, onDelete, onEdit}) {
     // Local state: editable amount field
     const [editAmount, setEditAmount] = useState(t.amount);
 
-    
-
     // -------------------------------
     // CHILD COMPONENT RETURN (UI for ONE item)
     // -------------------------------
+
     return (
       <motion.li variants={itemVariants} id={`t-${t.id}`} className={`transaction-item ${t.isNew ? "enter" : ""}`}>
         {/* If editing → show inputs */}
