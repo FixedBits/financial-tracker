@@ -84,6 +84,12 @@ function App() {
     setTransactions((prev) => prev.map((t) => (t.id === id ? {...t, text: newText, amount: newAmount} : t)));
   };
 
+  const filteredTransactions = transactions.filter((t) => {
+    if (filter === "income") return t.amount >= 0;
+    if (filter === "expense") return t.amount < 0;
+    return true; // "all"
+  });
+
   // ===============================
   // ROOT COMPONENT RETURN
   // Renders the entire app UI
@@ -98,8 +104,15 @@ function App() {
       {/* Form for adding new transactions */}
       <TransactionForm onAdd={addTransaction} />
 
+      {/* Filter Buttons */}
+      <div className="filters">
+        <button onClick={() => setFilter("all")}>All</button>
+        <button onClick={() => setFilter("income")}>Income</button>
+        <button onClick={() => setFilter("expense")}>Expense</button>
+      </div>
+
       {/* List of all transactions */}
-      <TransactionList items={transactions} onDelete={deleteTransaction} onEdit={editTransaction} />
+      <TransactionList items={filteredTransactions} onDelete={deleteTransaction} onEdit={editTransaction} />
     </div>
   );
 }
