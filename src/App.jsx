@@ -17,21 +17,22 @@ import TransactionList from "./components/TransactionList";
 // Holds ALL global state for the app
 // ===============================
 function App() {
-  // Global list of all transactions
+  // Global list of all transactions (array stored in state)
   const [transactions, setTransactions] = useState([]);
 
-  // Filter state
+  // Current filter mode ("all", "income", "expense")
+  // setFilter updates this value when buttons are clicked
   const [filter, setFilter] = useState("all");
 
-  // Tracks whether this is the first render
+  // Tracks whether this is the first render (so we don't save immediately)
   const firstRender = useRef(true);
 
   // ===============================
-  // LOAD SAVED TRANSACTIONS (runs once)
+  // LOAD SAVED TRANSACTIONS (runs once on mount)
   // ===============================
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("transactions"));
-    if (saved !== null) setTransactions(saved);
+    if (saved !== null) setTransactions(saved); // restore saved list
   }, []);
 
   // ===============================
@@ -41,10 +42,11 @@ function App() {
   // ===============================
   useEffect(() => {
     if (firstRender.current) {
-      firstRender.current = false;
+      firstRender.current = false; // mark first render as done
       return; // skip saving on first load
     }
 
+    // Save updated transactions list
     localStorage.setItem("transactions", JSON.stringify(transactions));
   }, [transactions]);
 
@@ -53,7 +55,7 @@ function App() {
   // Called by <TransactionForm />
   // ===============================
   const addTransaction = (transaction) => {
-    // Add the new transaction to the list
+    // Add new transaction to the array
     setTransactions((prev) => [...prev, transaction]);
 
     // After animation delay, remove isNew flag
@@ -67,12 +69,13 @@ function App() {
   // Called by <TransactionList />
   // ===============================
   const deleteTransaction = (id) => {
+    // Remove the transaction with matching id
     setTransactions((prev) => prev.filter((t) => t.id !== id));
   };
 
   // ===============================
   // CALCULATE TOTAL BALANCE
-  // Derived value from transactions
+  // Derived from all transaction amounts
   // ===============================
   const totalBalance = transactions.reduce((sum, t) => sum + Number(t.amount), 0);
 
@@ -81,13 +84,21 @@ function App() {
   // Called by <TransactionList />
   // ===============================
   const editTransaction = (id, newText, newAmount) => {
+    // Replace the matching transaction with updated values
     setTransactions((prev) => prev.map((t) => (t.id === id ? {...t, text: newText, amount: newAmount} : t)));
   };
 
+  // ===============================
+  // FILTERED TRANSACTIONS
+  // Logic:
+  // - income → amount >= 0
+  // - expense → amount < 0
+  //  -anything else → return true (show all)
+  // ===============================
   const filteredTransactions = transactions.filter((t) => {
     if (filter === "income") return t.amount >= 0;
     if (filter === "expense") return t.amount < 0;
-    return true; // "all"
+    return true; // default: include everything
   });
 
   // ===============================
@@ -106,12 +117,17 @@ function App() {
 
       {/* Filter Buttons */}
       <div className="filters">
+        {/* Set filter to "all" */}
         <button onClick={() => setFilter("all")}>All</button>
+
+        {/* Set filter to "income" */}
         <button onClick={() => setFilter("income")}>Income</button>
+
+        {/* Set filter to "expense" */}
         <button onClick={() => setFilter("expense")}>Expense</button>
       </div>
 
-      {/* List of all transactions */}
+      {/* Render filtered list */}
       <TransactionList items={filteredTransactions} onDelete={deleteTransaction} onEdit={editTransaction} />
     </div>
   );
