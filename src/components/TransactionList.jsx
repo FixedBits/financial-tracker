@@ -67,7 +67,7 @@ function TransactionList({items, onDelete, onEdit}) {
 
             {/* Save button → calls parent edit + exits edit mode */}
             <button
-              className="save-btn"
+              className="btn save-btn"
               onClick={() => {
                 onEdit(t.id, editText, editAmount);
                 setIsEditing(false);
@@ -77,7 +77,7 @@ function TransactionList({items, onDelete, onEdit}) {
             </button>
 
             {/* Cancel button → exits edit mode */}
-            <button className="cancel-btn" onClick={() => setIsEditing(false)}>
+            <button className="btn cancel-btn" onClick={() => setIsEditing(false)}>
               Cancel
             </button>
           </>
@@ -89,14 +89,14 @@ function TransactionList({items, onDelete, onEdit}) {
             <span className={`transaction-amount ${t.amount >= 0 ? "income" : "expense"}`}>$ {t.amount.toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
 
             {/* Edit button → enters edit mode */}
-            <button className="edit-btn" onClick={() => setIsEditing(true)}>
+            <button className="btn btn-ghost" onClick={() => setIsEditing(true)}>
               Edit
             </button>
           </>
         )}
 
         {/* Delete button → triggers delete animation */}
-        <button className="delete-btn" onClick={() => handleDelete(t.id)}>
+        <button className="btn delete-btn" onClick={() => handleDelete(t.id)}>
           ×
         </button>
       </motion.li>

@@ -44,16 +44,6 @@ h1 {
   outline: none;
 }
 
-.transaction-form button {
-  padding: 10px;
-  background: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
 .transaction-form button:hover {
   background: #43a047;
 }
@@ -171,6 +161,47 @@ h1 {
 .transaction-item.enter {
   animation: enterAnim 0.35s ease-out;
 }
+
+.btn-primary {
+  background: #4caf50;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #347d38;
+}
+
+.btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #bbb;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
 @keyframes enterAnim {
   from {
     opacity: 0;
