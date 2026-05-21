@@ -1,3 +1,4 @@
+/* App container layout + theme */
 .app {
   max-width: 500px;
   margin: 40px auto;
@@ -7,6 +8,8 @@
   background: #1e1e1e;
   border-radius: 12px;
 }
+
+/* Global scrollbar + page background */
 html {
   scrollbar-width: thin;
 }
@@ -15,28 +18,28 @@ body {
   color: #fff;
 }
 
+/* Page title + balance section */
 h1 {
   text-align: center;
   margin-bottom: 20px;
 }
-
 .balance {
   text-align: center;
   margin-bottom: 20px;
 }
-
 .balance .amount {
   font-size: 2rem;
   font-weight: bold;
   margin-top: 10px;
 }
+
+/* Add‑transaction form layout + inputs */
 .transaction-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 20px;
 }
-
 .transaction-form input {
   padding: 10px;
   border-radius: 6px;
@@ -44,26 +47,22 @@ h1 {
   outline: none;
 }
 
-.transaction-form button:hover {
-  background: #43a047;
-}
-
+/* Transaction list section */
 .transaction-list h2 {
   margin-bottom: 10px;
 }
-
 .transaction-list .empty {
   text-align: center;
   opacity: 0.6;
   margin-bottom: 10px;
 }
-
 .transaction-list ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
+/* Individual transaction row */
 .transaction-item {
   display: flex;
   justify-content: space-between;
@@ -72,7 +71,6 @@ h1 {
   border-radius: 6px;
   padding: 10px;
   margin-bottom: 10px;
-
   transition:
     opacity 0.25s ease,
     transform 0.25s ease,
@@ -81,6 +79,7 @@ h1 {
     padding 0.25s ease;
 }
 
+/* Smooth removal animation */
 .transaction-item.removing {
   opacity: 0;
   transform: translateX(-10px);
@@ -91,6 +90,7 @@ h1 {
   overflow: hidden;
 }
 
+/* Transaction text + amount formatting */
 .transaction-text {
   font-weight: 500;
   flex: 1;
@@ -98,7 +98,6 @@ h1 {
   word-wrap: break-word;
   margin-right: 1.5rem;
 }
-
 .transaction-amount {
   margin-left: auto;
   margin-right: 1rem;
@@ -106,50 +105,47 @@ h1 {
   white-space: nowrap;
 }
 
+/* Income/expense color coding */
 .income {
   color: #4caf50;
   font-weight: bold;
 }
-
 .expense {
   color: #e53935;
   font-weight: bold;
 }
-
 .amount.positive {
-  color: #4caf50; /* green */
+  color: #4caf50;
 }
-
 .amount.negative {
-  color: #e53935; /* red */
+  color: #e53935;
 }
 
+/* Delete button (hidden until hover) */
 .delete-btn {
   background: none;
   border: none;
   color: #bbb;
   font-size: 1rem;
   cursor: pointer;
-  opacity: 0; /* hidden */
+  opacity: 0;
   transition: opacity 0.2s ease;
 }
-
 .delete-btn:hover {
   opacity: 1;
   background: rgba(217, 83, 79, 0.1);
   color: #c9302c;
   border-radius: 5px;
 }
-
 .transaction-item:hover .delete-btn {
   opacity: 1;
 }
 
+/* Enter animation for new items */
 .transaction-item.enter {
   opacity: 0;
   transform: translateY(-6px);
 }
-
 .transaction-item.enter-active {
   opacity: 1;
   transform: translateY(0);
@@ -157,20 +153,20 @@ h1 {
     opacity 0.25s ease,
     transform 0.25s ease;
 }
-
 .transaction-item.enter {
   animation: enterAnim 0.35s ease-out;
 }
 
+/* Primary button (Add, Save) */
 .btn-primary {
   background: #4caf50;
   color: #fff;
 }
-
 .btn-primary:hover {
   background: #347d38;
 }
 
+/* Base button styling */
 .btn {
   padding: 8px 14px;
   border-radius: 6px;
@@ -184,6 +180,7 @@ h1 {
     opacity 0.2s ease;
 }
 
+/* Ghost button (Cancel, Edit) */
 .btn-ghost {
   background: transparent;
   color: #bbb;
@@ -196,12 +193,12 @@ h1 {
     background 0.2s ease,
     color 0.2s ease;
 }
-
 .btn-ghost:hover {
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
 }
 
+/* Entry animation keyframes */
 @keyframes enterAnim {
   from {
     opacity: 0;
