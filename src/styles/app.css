@@ -49,7 +49,7 @@ h1 {
 
 /* Transaction list section */
 .transaction-list h2 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .transaction-list .empty {
   text-align: center;
@@ -180,7 +180,35 @@ h1 {
     opacity 0.2s ease;
 }
 
-/* Ghost button (Cancel, Edit) */
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-top: 45px;
+}
+
+.filters button {
+  background: #2f2f2f;
+  color: #ccc;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.filters button:hover {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+.filters button.active {
+  background: #4caf50;
+  color: #fff;
+}
+
+/* Ghost button (Edit text) */
 .btn-ghost {
   background: transparent;
   color: #bbb;

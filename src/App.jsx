@@ -118,17 +118,17 @@ function App() {
       {/* Filter Buttons */}
       <div className="filters">
         {/* Set filter to "all" */}
-        <button className="btn" onClick={() => setFilter("all")}>
+        <button className={`btn ${filter === "all" ? "active" : " "}`} onClick={() => setFilter("all")}>
           All
         </button>
 
         {/* Set filter to "income" */}
-        <button className="btn" onClick={() => setFilter("income")}>
+        <button className={`btn ${filter === "income" ? "active" : " "}`} onClick={() => setFilter("income")}>
           Income
         </button>
 
         {/* Set filter to "expense" */}
-        <button className="btn" onClick={() => setFilter("expense")}>
+        <button className={`btn ${filter === "expense" ? "active" : " "}`} onClick={() => setFilter("expense")}>
           Expense
         </button>
       </div>
