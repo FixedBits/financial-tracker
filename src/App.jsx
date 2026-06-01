@@ -109,11 +109,15 @@ function App() {
     <div className="app">
       <h1>Financial Tracker</h1>
 
-      {/* Balance summary */}
-      <Balance total={totalBalance} />
+      <div></div>
 
-      {/* Form for adding new transactions */}
-      <TransactionForm onAdd={addTransaction} />
+      <div className="summary-section">
+        {/* Balance summary */}
+        <Balance total={totalBalance} />
+
+        {/* Form for adding new transactions */}
+        <TransactionForm onAdd={addTransaction} />
+      </div>
 
       {/* Filter Buttons */}
       <div className="filters">

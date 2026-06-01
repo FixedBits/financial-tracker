@@ -60,7 +60,7 @@ function TransactionList({items, onDelete, onEdit}) {
       <motion.li variants={itemVariants} id={`t-${t.id}`} className={`transaction-item ${t.isNew ? "enter" : ""}`}>
         {/* If editing → show inputs */}
         {isEditing ? (
-          <>
+          <div className="edit-mode">
             <input className="edit-input" value={editText} onChange={(e) => setEditText(e.target.value)} />
 
             <input className="edit-input amount" type="number" value={editAmount} onChange={(e) => setEditAmount(Number(e.target.value))} />
@@ -80,7 +80,7 @@ function TransactionList({items, onDelete, onEdit}) {
             <button className="btn cancel-btn" onClick={() => setIsEditing(false)}>
               Cancel
             </button>
-          </>
+          </div>
         ) : (
           <>
             {/* Normal view mode */}
