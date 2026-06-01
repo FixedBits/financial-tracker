@@ -96,7 +96,7 @@ function TransactionList({items, onDelete, onEdit}) {
         )}
 
         {/* Delete button → triggers delete animation */}
-        <button className="btn delete-btn" onClick={() => handleDelete(t.id)}>
+        <button className="btn delete-btn" title="Delete Transaction" onClick={() => handleDelete(t.id)}>
           ×
         </button>
       </motion.li>
