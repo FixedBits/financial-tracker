@@ -1,6 +1,6 @@
-/* App container layout + theme */
+/* Main app container */
 .app {
-  max-width: 500px;
+  max-width: 720px;
   margin: 40px auto;
   padding: 20px;
   font-family: system-ui, sans-serif;
@@ -9,7 +9,7 @@
   border-radius: 12px;
 }
 
-/* Global scrollbar + page background */
+/* Scrollbar + global background */
 html {
   scrollbar-width: thin;
 }
@@ -18,7 +18,7 @@ body {
   color: #fff;
 }
 
-/* Page title + balance section */
+/* Title + balance display */
 h1 {
   text-align: center;
   margin-bottom: 20px;
@@ -33,7 +33,7 @@ h1 {
   margin-top: 10px;
 }
 
-/* Add‑transaction form layout + inputs */
+/* Add‑transaction form layout */
 .transaction-form {
   display: flex;
   flex-direction: column;
@@ -41,6 +41,7 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* Form inputs */
 .transaction-form input {
   background: #3a3a3a;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.267);
@@ -51,8 +52,12 @@ h1 {
   color: #fff;
 }
 
+/* Add button */
 .transaction-form .add-btn {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.267);
+}
+.transaction-form .add-btn:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
 }
 
 /* Transaction list section */
@@ -70,7 +75,7 @@ h1 {
   margin: 0;
 }
 
-/* Individual transaction row */
+/* Single transaction row */
 .transaction-item {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.267);
   display: flex;
@@ -88,7 +93,7 @@ h1 {
     padding 0.25s ease;
 }
 
-/* Smooth removal animation */
+/* Delete animation */
 .transaction-item.removing {
   opacity: 0;
   transform: translateX(-10px);
@@ -99,8 +104,9 @@ h1 {
   overflow: hidden;
 }
 
-/* Transaction text + amount formatting */
+/* Transaction text + amount */
 .transaction-text {
+  padding: 0 10px;
   font-weight: 500;
   flex: 1;
   min-width: 0;
@@ -114,7 +120,7 @@ h1 {
   white-space: nowrap;
 }
 
-/* Income/expense color coding */
+/* Income/expense colors */
 .income {
   color: #4caf50;
   font-weight: bold;
@@ -150,7 +156,7 @@ h1 {
   opacity: 1;
 }
 
-/* Enter animation for new items */
+/* New item enter animation */
 .transaction-item.enter {
   opacity: 0;
   transform: translateY(-6px);
@@ -166,7 +172,7 @@ h1 {
   animation: enterAnim 0.35s ease-out;
 }
 
-/* Primary button (Add, Save) */
+/* Primary buttons (Add, Save) */
 .btn-primary {
   background: #4caf50;
   color: #fff;
@@ -189,13 +195,13 @@ h1 {
     opacity 0.2s ease;
 }
 
+/* Filter buttons */
 .filters {
   display: flex;
   justify-content: center;
   gap: 12px;
   margin-top: 25px;
 }
-
 .filters button {
   flex: 1;
   min-width: 90px;
@@ -212,12 +218,16 @@ h1 {
     background 0.2s ease,
     color 0.2s ease;
 }
-
 .filters button:hover {
   background: #3a3a3a;
   color: #fff;
 }
+.filters button.active {
+  background: #4caf50;
+  color: #fff;
+}
 
+/* Summary section */
 .summary-section {
   display: flex;
   gap: 20px;
@@ -229,12 +239,7 @@ h1 {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
-.filters button.active {
-  background: #4caf50;
-  color: #fff;
-}
-
-/* Ghost button (Edit text) */
+/* Edit button (ghost style) */
 .btn-ghost {
   background: transparent;
   color: #bbb;
@@ -252,6 +257,7 @@ h1 {
   color: #fff;
 }
 
+/* Edit mode container */
 .edit-input {
   background: #3a3a3a;
   color: #fff;
@@ -260,7 +266,6 @@ h1 {
   border: none;
   outline: none;
 }
-
 .edit-mode {
   background: #2f2f2f;
   display: flex;
@@ -274,50 +279,45 @@ h1 {
     color 0.2s ease;
 }
 
+/* Edit mode buttons */
 .edit-mode .cancel-btn {
   color: #e53935;
 }
-
 .edit-mode .cancel-btn:hover {
   color: #ff6b6b;
 }
-
 .edit-mode .save-btn:hover {
   color: #4caf50;
 }
-
 .edit-mode input {
   background: #3a3a3a;
 }
-
 .edit-mode button {
   color: #ccc;
   background: #353535;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
-
 .edit-mode button:hover {
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 }
 
+/* Hide delete button while editing */
 .edit-mode ~ .delete-btn {
   display: none;
 }
 
-/* Chrome, Edge, Safari */
+/* Remove number input arrows */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-/* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
 }
 
-/* Entry animation keyframes */
+/* New item animation keyframes */
 @keyframes enterAnim {
   from {
     opacity: 0;
