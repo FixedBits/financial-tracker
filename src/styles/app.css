@@ -40,14 +40,19 @@ h1 {
   gap: 10px;
   margin-bottom: 20px;
 }
+
 .transaction-form input {
   background: #3a3a3a;
-
-  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.267);
+  padding: 11px;
   border-radius: 6px;
   border: none;
   outline: none;
   color: #fff;
+}
+
+.transaction-form .add-btn {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.267);
 }
 
 /* Transaction list section */
@@ -294,6 +299,10 @@ h1 {
 .edit-mode button:hover {
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.edit-mode ~ .delete-btn {
+  display: none;
 }
 
 /* Chrome, Edge, Safari */
