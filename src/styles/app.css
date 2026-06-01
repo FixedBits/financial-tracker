@@ -47,6 +47,7 @@ h1 {
   border-radius: 6px;
   border: none;
   outline: none;
+  color: #fff;
 }
 
 /* Transaction list section */
@@ -285,12 +286,26 @@ h1 {
 }
 
 .edit-mode button {
+  color: #ccc;
   background: #353535;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 .edit-mode button:hover {
-  background: #242424;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+/* Chrome, Edge, Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 /* Entry animation keyframes */
