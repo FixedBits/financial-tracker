@@ -54,7 +54,7 @@ function TransactionForm({onAdd}) {
       <input type="number" placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
 
       {/* Submit button */}
-      <button className="btn btn-primary" type="submit">
+      <button className="btn btn-primary add-btn" type="submit">
         Add
       </button>
     </form>
