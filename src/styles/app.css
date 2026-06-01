@@ -263,11 +263,34 @@ h1 {
   border-radius: 6px;
   gap: 10px;
   width: 100%;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.edit-mode .cancel-btn {
+  color: #e53935;
+}
+
+.edit-mode .cancel-btn:hover {
+  color: #ff6b6b;
+}
+
+.edit-mode .save-btn:hover {
+  color: #4caf50;
+}
+
+.edit-mode input {
+  background: #3a3a3a;
+}
+
+.edit-mode button {
+  background: #353535;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 .edit-mode button:hover {
-  background: #2a2a2a;
-  color: #fff;
+  background: #242424;
 }
 
 /* Entry animation keyframes */
