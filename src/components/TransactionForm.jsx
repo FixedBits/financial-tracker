@@ -51,7 +51,7 @@ function TransactionForm({onAdd}) {
       <input type="text" placeholder="Description" value={text} onChange={(e) => setText(e.target.value)} />
 
       {/* Amount input */}
-      <input type="number" placeholder="Amount (e.g. 10 or -10)" value={amount} onChange={(e) => setAmount(e.target.value)} />
+      <input type="text" inputMode="decimal" placeholder="Amount (e.g. 10 or -10)" value={amount} onChange={(e) => setAmount(e.target.value)} />
 
       {/* Submit button */}
       <button className="btn btn-primary add-btn" type="submit">
@@ -59,7 +59,7 @@ function TransactionForm({onAdd}) {
       </button>
     </form>
   );
-} 
+}
 
 // Export the component so App.jsx can use it
 export default TransactionForm;
