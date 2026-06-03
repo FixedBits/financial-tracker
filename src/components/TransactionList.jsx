@@ -63,7 +63,7 @@ function TransactionList({items, onDelete, onEdit}) {
           <div className="edit-mode">
             <input className="edit-input" value={editText} onChange={(e) => setEditText(e.target.value)} />
 
-            <input className="edit-input amount" type="number" value={editAmount} onChange={(e) => setEditAmount(Number(e.target.value))} />
+            <input className="edit-input amount" type="text" value={editAmount} onChange={(e) => setEditAmount(Number(e.target.value))} />
 
             {/* Save button → calls parent edit + exits edit mode */}
             <button
