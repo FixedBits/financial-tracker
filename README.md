@@ -1,16 +1,52 @@
-# React + Vite
+# Financial Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React app for tracking income and expenses. Add, edit, delete and filter transactions, and watch your balance update automatically. Your data is saved in the browser, so it's still there when you come back.
 
-Currently, two official plugins are available:
+**Live demo:** https://fixedbits.github.io/financial-tracker/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![Financial Tracker app](screenshots/financial-tracker.png)
 
-## React Compiler
+![Editing a transaction](screenshots/tracker-edit.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Add transactions with a description and an amount
+- Edit or delete any transaction
+- Filter the list by All, Income or Expense
+- Balance updates automatically and turns red when negative
+- Transactions are saved to localStorage and restored on reload
+- Animated list items for adding and removing transactions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+- React (hooks: useState, useEffect, useRef)
+- Vite
+- Framer Motion
+- CSS
+
+## How to Use
+
+1. Type a description and an amount, then click **Add**.
+2. Use a negative number for an expense, like -25. Positive numbers count as income.
+3. Click **Edit** to change a transaction, then **Save** or **Cancel**.
+4. Click the **x** to delete a transaction.
+5. Use the **All**, **Income** and **Expense** buttons to filter the list.
+
+## Run Locally
+
+```bash
+git clone https://github.com/FixedBits/financial-tracker.git
+cd financial-tracker
+npm install
+npm run dev
+```
+
+Then open the local URL shown in your terminal.
+
+## Notes
+
+This is a front-end only project with no backend. Data is stored in your browser, so clearing site data will remove your transactions.
+
+## Author
+
+Built by [FixedBits](https://github.com/FixedBits)
